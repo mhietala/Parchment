@@ -30,6 +30,7 @@ open class PagingTitleCell: PagingCell {
     if let titleItem = pagingItem as? PagingTitleItem {
       viewModel = PagingTitleCellViewModel(
         title: titleItem.title,
+        accessibilityLabel: titleItem.accessibilityLabel,
         selected: selected,
         options: options)
     }
@@ -49,6 +50,7 @@ open class PagingTitleCell: PagingCell {
     guard let viewModel = viewModel else { return }
     titleLabel.text = viewModel.title
     titleLabel.textAlignment = .center
+    titleLabel.accessibilityLabel = viewModel.accessibilityLabel
     
     if viewModel.selected {
       titleLabel.font = viewModel.selectedFont
