@@ -50,17 +50,19 @@ open class PagingTitleCell: PagingCell {
     guard let viewModel = viewModel else { return }
     titleLabel.text = viewModel.title
     titleLabel.textAlignment = .center
-    titleLabel.accessibilityLabel = viewModel.accessibilityLabel
-    
+    var accessibilityLabel = viewModel.accessibilityLabel ?? ""
     if viewModel.selected {
       titleLabel.font = viewModel.selectedFont
       titleLabel.textColor = viewModel.selectedTextColor
       backgroundColor = viewModel.selectedBackgroundColor
+      accessibilityLabel += ","
+      accessibilityLabel += "aktiivinen"
     } else {
       titleLabel.font = viewModel.font
       titleLabel.textColor = viewModel.textColor
       backgroundColor = viewModel.backgroundColor
     }
+    titleLabel.accessibilityLabel = accessibilityLabel
   }
   
   open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
